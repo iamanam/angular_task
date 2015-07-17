@@ -1,0 +1,86 @@
+<div class=" container-fluid">
+    <div class="row">
+        <div class="mainDiv col-xs-12 col-sm-8 col-md-8 col-lg-8">
+            <div class="col-xs-12 sortTask"><span>Sort By :</span>
+                <div class="sortTable">
+                    <button class="all">All</button>
+                    <button class="isPast">Past</button>
+                    <button class="isToday">Today</button>
+
+                    <button>Recent</button>
+                    <button class="isInweek">Weeks</button>
+                </div>
+            </div>
+
+            <div class="upcomingTask" ng-controller="autoUpdate">
+                <Div ng-if="totalCount==0">
+                    <h2> Currently you don't have any task. TO get started make a new task</h2></Div>
+                <ul>
+                    <li class="taskLi" ng-repeat="task in tasks" ng-controller="viewEdit">
+                        <div class="viewData" data-tag="{{task.randomId}}" id="task_show_{{task._id}}">
+                            <div class="dataHouse">
+                                <span ng-click="editSingle($event,'name',task._id)" class="editItem"></span>
+                                <p data-old="{{task.name}}" class="dataP name"> {{task.name}}</p>
+                                <input name="editName" style="display:inline" type="text" class="editInput hide" ng-init="Editname=task.name" ng-model="Editname" required>
+                                <button style="display:inline" class="editButton hide" ng-click="editProcess($event,Editname,'name',task._id)">Edit</button>
+                            </div>
+                            <div class="dataHouse">
+                                <span ng-click="editSingle($event,'description',task._id)" class="editItem"></span>
+                                <p data-old="{{task.description}}" class="dataP description">{{task.description}}</p>
+                                <input style="display:inline" type="text" class="editInput hide" ng-init="EditDes=task.description" ng-model="EditDes" required>
+                                <button style="display:inline" ng-click="editProcess($event,EditDes,'description',task._id)" class="editButton hide">Edit</button>
+                            </div>
+                                <div class="dataHouse">
+                                <span ng-click="editSingle($event,'description',task._id)" class="editItem"></span>
+                                <p data-old="{{task.description}}" class="dataP description">{{task.description}}</p>
+                                <input style="display:inline" type="text" class="editInput hide" ng-init="EditDes=task.description" ng-model="EditDes" required>
+                                <button style="display:inline" ng-click="editProcess($event,EditDes,'description',task._id)" class="editButton hide">Edit</button>
+                            </div>
+                            <div class="dataHouse timeHouse" ng-if="task.date!==undefined && task.time !==undefined">
+                                <span ng-click="editSingle($event,'dateTime',task._id)" class="editItem"></span>
+                                <p data-old="{{task.date}} {{task.time}}" ng-if="task.date!==undefined" class="dataP dateTime">
+                                    {{task.displayTime}}</p>
+                                <form name="editDateTimeForm">
+                                    <input style="display:inline" min="{{today}}" name="date" type="date" class="editInput hide" ng-model="update.date" required>
+                                    <input style="display:inline" ng-show="editDateTimeForm.date.$valid" name="time" type="time" class="editInput hide" ng-model="update.time" required>
+                                    <button style="display:inline" ng-click="editProcess($event,update,'dateTime',task._id)" class="editButton hide" ng-disabled="editDateTimeForm.date.$invalid || editDateTimeForm.time.$invalid">Edit</button>
+                                </form>
+                            </div>
+                            <br>
+                            <div class="editHouse">
+                                <button class="editTask">Edit</button>
+                                <button ng-click="delete(task.randomId)" class="deleteTask">Delete</button>
+                                <span class="result"></span>
+                            </div>
+                        </div>
+                        <div class="editData" style="display:none">
+                            <label class="editLabel">Name</label>
+                            <input type="text" value="{{task.name}}">
+                            <label class="editLabel">Details</label>
+                            <input type="text" value="{{task.description}}">
+                            <label class="editLabel">Time</label>
+                            <input type="text" value="{{task.time}}">
+                            <br>
+                            <button class="editSubmit"> Edit</button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div ng-if="totalCount > 0" ng-controller="countDown" class="col-xs-12 col-sm-4 col-md-4 col-lg-4 timer">
+            <div class="spinner"></div>
+            <div class="showCountdown">
+                <div class="count" ng-repeat="task in tasks">
+                    <h5 class="countTaskName" data-parse={{task.timeParse}}>Next #{{$index}} {{task.name}}  <span class="fwd" ng-click="rollOver($index,$first,$last,$middle)"></span></h5>
+                    <label class="dayCount"></label>
+                    <label class="hrCount"></label>
+                    <label class="minCount"></label>
+                    <label class="secCount"></label>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 addTask ">
+            <div ng-include="'client/template/addTask.ng.html'"></div>
+        </div>
+    </div>
+</div>

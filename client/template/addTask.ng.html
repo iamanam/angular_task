@@ -1,0 +1,24 @@
+
+
+
+<form ng-controller="addTask" name="Task" novalidate>
+<h3 class="form-title ">Add new Task</h3>
+
+<div class="form-horizontal">
+	<label>Task Name</label>
+	<input type="text" name="taskName" value="test title" class="form-control" ng-model="newTask.name" required>
+	<br>
+	<label>Task descriptiom</label>
+	<input type="text" name="des" value="text value" class="form-control" ng-model="newTask.description" required>
+	<br>
+	<label>Task date</label>
+	<input type="date" name="date" class="form-control" ng-model="newTask.date" required>
+	<br>
+	<label>Task time</label>
+	<input type="time" name="time" class="form-control" ng-model="newTask.time" required>
+	<br>
+	<button class="btn btn-default" ng-click="addNewTask(newTask)" ng-disabled="taskName.$invalid
+	 || Task.time.$invalid || Task.date.$invalid">Add</button>
+
+	 </div>
+</form>

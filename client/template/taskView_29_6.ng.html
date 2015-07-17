@@ -1,0 +1,60 @@
+<div class="row">
+
+	<div class="mainDiv {{setClass}}">
+		<div class="upcomingTask ">
+			<ul>
+				<li class="taskLi" ng-repeat="task in tasks">
+				<div class="viewData" data-index="{{$index}}"  id="task_show_{{task._id}}">
+					<p >
+                     <a class="editLink" ng-click="editSingle($event,$index,task._id)"><span class="editItem"></span></a>
+
+					<p class="dataP" ng-class="{destroy:Edit.name.length!=task.name.length}" ng-hide="index===$index">{{$index+1}} {{task.name}}</p>
+					<input type="text"  ng-init="Edit.name=task.name" ng-model="Edit.name"  ng-show="index===$index" >
+					<p class="dataP" data-length="{{task.name.length}}" ng-class="{edited:Edit.name.length!== task.name.length}" ng-show="Edit.name.length !== task.name.length">{{Edit.name}}</p>
+ 
+
+
+					</p>
+					<p class="dataP">{{task.description}}
+                      <span class="editItem"></span>
+
+					</p>
+					<p class="dataP" ng-if="task.time!==undefined">{{task.time}}</p>
+
+					<button class="editTask">Edit</button>
+					<button ng-click="delete(task._id)" class="deleteTask">Delete</button>
+					</div>
+					<div class="editData"  style="display:none">
+					<label class="editLabel">Name</label>
+					<input type="text" value="{{task.name}}">
+						<label class="editLabel">Details</label>
+					<input type="text" value="{{task.description}}">
+						<label class="editLabel">Time</label>
+					<input type="text" value="{{task.time}}">
+					<br>
+					<button class="editSubmit"> Edit</button>
+
+					</div>
+
+				
+
+				</li>
+			</ul>
+			<p>{{screenWidth}}</p>
+		</div>
+	</div>
+
+	<div class="col-md-4 timer">
+		<h4>Neareast task</h4>
+	
+	</div>
+	<div class="col-md-4 addTask ">
+	
+	<div ng-include="'client/template/addTask.ng.html'"></div>
+	
+		
+	</div>
+</div>
+<div class="row">
+	
+</div>
