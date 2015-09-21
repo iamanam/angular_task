@@ -46,11 +46,11 @@ Meteor.startup(function() {
 
            
             //timeData[]=;
-            //dataTosave = updateType == "dateTime" ? timeData : updateData;
+            dataTosave = updateType == "dateTime" ? timeData : updateData;
             
             x=tasklist.update({
                     randomId: parseInt(taskId)
-                }
+                },{$set:dataTosave}
 
             )
 
@@ -76,8 +76,9 @@ Meteor.startup(function() {
                 dateCreated: dataSet.validFormat.taskTime,
                 offset: dataSet.validFormat.offsett,
                 timeParse: dataSet.validFormat.timeParse,
-                randomId: dataSet.validFormat.timeParse,
+                randomId: dataSet.validFormat.taskTime,
                 displayTime: relTime(dataSet.validFormat.timeParse),
+                tags:dataSet.newTask.tags,
             }
             c = tasklist.insert(validJson);
             console.log(c);

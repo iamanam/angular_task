@@ -1,4 +1,4 @@
-angular:angular@1.4.2
+angular:angular@1.4.3
 angularui:angular-ui-router@0.2.15
 autoupdate@1.2.1
 base64@1.0.3
@@ -35,9 +35,10 @@ meteor-platform@1.2.2
 minifiers@1.1.5
 minimongo@1.0.8
 mobile-status-bar@1.0.3
-momentjs:moment@2.10.3
+momentjs:moment@2.10.6
 mongo@1.1.0
-nemo64:bootstrap@3.3.5_1
+mrt:chosen-package@0.11.1
+nemo64:bootstrap@3.3.5_2
 nemo64:bootstrap-data@3.3.5
 observe-sequence@1.0.6
 ordered-dict@1.0.3
@@ -50,6 +51,7 @@ routepolicy@1.0.5
 session@1.1.0
 spacebars@1.0.6
 spacebars-compiler@1.0.6
+stylus@1.0.7
 templating@1.1.1
 tracker@1.0.7
 ui@1.0.6

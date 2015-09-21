@@ -3,18 +3,8 @@
   <base href="/">
 </head>
 <body ng-app="task">
-  <div class="header">
-    <a class="iconOpen"><span class="glyphicon glyphicon-th-large openicon" aria-hidden="true"></span></a>
-  </div>
-  
-  <div id="sidr">
-    <!-- Your content -->
-    <ul>
-      <li><a href="#">List 1</a></li>
-      <li class="active"><a href="#">List 2</a></li>
-      <li><a href="#">List 3</a></li>
-    </ul>
-  </div>
+
+<div ng-include="'client/template/header.ng.html'"></div>
   <!--
   <div ng-controller="menuController">
     <div class="xmenu fixedmenu">
@@ -23,9 +13,13 @@
     </div>
   </div>
   -->
+  <!--
 <div ng-include="'client/template/short.ng.html'" class="first-container"></div>
+-->
 
-    <div ui-view></div>
+    <div ui-view>
+
+    </div>
   
 </body>
 
